@@ -5,13 +5,17 @@ from threading import Thread
 from flask import Flask
 from flask import abort
 from flask import jsonify
+from flask import make_response
 from flask import request
+from flask_httpauth import HTTPBasicAuth
 
 from utils import setup_logging
 from utils import sleep
 
 PORT = "port"
 LOG_LEVEL = "loglevel"
+
+# Inspired by: https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
 if __name__ == "__main__":
     # Parse CLI args
@@ -24,7 +28,20 @@ if __name__ == "__main__":
     # Setup logging
     setup_logging(level=args[LOG_LEVEL])
 
+    auth = HTTPBasicAuth()
     http = Flask(__name__)
+
+
+    @auth.get_password
+    def get_password(username):
+        if username == 'top':
+            return 'secret'
+        return None
+
+
+    @auth.error_handler
+    def unauthorized():
+        return make_response(jsonify({'error': 'Unauthorized access'}), 401)
 
 
     @http.route("/plain-hello")
@@ -53,6 +70,7 @@ if __name__ == "__main__":
     ]
 
 
+    @auth.login_required
     @http.route("/customers")
     def get_customers():
         return jsonify({'customers': customers})
