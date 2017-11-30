@@ -1,30 +1,58 @@
-# web-service-demos
+# Web Servcies Demo
 
+## Setup
+
+Clone the repo with:
 ```bash
-http http://localhost:8080/plain-hello
+$ mkdir ~/git
+$ cd git
+$ git clone https://github.com/athenian-robotics/web-services-demo.git
 ```
 
+Install the required python modules with:
 ```bash
-http http://localhost:8080/html-hello
+$ cd ~/git/web-services-demo
+$ pip install -r requirements.txt
 ```
 
-### Query all values
+Install [httpie](https://httpie.org) with:
 ```bash
-http http://localhost:8080/customers
+$ brew install httpie
 ```
 
-### Query single value
+## Usage
+
+Start the server with:
 ```bash
-http http://localhost:8080/customers/1
-http http://localhost:8080/customers/2
-http http://localhost:8080/customers/3
+$ cd ~/git/web-services-demo
+$ python customer_server.py
+```
+
+### CLI Calls
+
+Say hello with:
+```bash
+$ http http://localhost:8080/plain-hello
+$ http http://localhost:8080/html-hello
+```
+
+Query all values with:
+```bash
+$ http http://localhost:8080/customers
+```
+
+Query single value with:
+```bash
+$ http http://localhost:8080/customers/1
+$ http http://localhost:8080/customers/2
+$ http http://localhost:8080/customers/3
 ```
 
 
-### Adding values via POST
+Add values via POST with:
 ```bash
-http http://localhost:8080/customers name='Joe Jackson' 
-http http://localhost:8080/customers
-http http://localhost:8080/customers name='Jill West' address='456 Sycamore Lane'
-http http://localhost:8080/customers
+$ http http://localhost:8080/customers name='Joe Jackson' 
+$ http http://localhost:8080/customers
+$ http http://localhost:8080/customers name='Jill West' address='456 Sycamore Lane'
+$ http http://localhost:8080/customers
 ```

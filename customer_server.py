@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import argparse
 import logging
 from threading import Thread
@@ -15,9 +17,10 @@ from utils import sleep
 PORT = "port"
 LOG_LEVEL = "loglevel"
 
-# Inspired by: https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
 if __name__ == "__main__":
+    # Inspired by: https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
+
     # Parse CLI args
     parser = argparse.ArgumentParser()
     parser.add_argument("-p", "--port", dest=PORT, default=8080, help="HTTP port [8080]")
@@ -66,6 +69,18 @@ if __name__ == "__main__":
             'name': 'Jane Jackson',
             'address': '1245 Birch Ave',
             'paid': True
+        },
+        {
+            'id': 3,
+            'name': 'Steve Stillwell',
+            'address': '433 Peach Lane',
+            'paid': True
+        },
+        {
+            'id': 4,
+            'name': 'Mary McKenna',
+            'address': '3454 Apple St',
+            'paid': False
         }
     ]
 
