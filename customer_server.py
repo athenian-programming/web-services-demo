@@ -12,11 +12,10 @@ from flask import request
 from flask_httpauth import HTTPBasicAuth
 
 from utils import setup_logging
-from utils import sleep
+from utils import waitForKeyboardInterrupt
 
 PORT = "port"
 LOG_LEVEL = "loglevel"
-
 
 if __name__ == "__main__":
     # Inspired by: https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
@@ -85,21 +84,34 @@ if __name__ == "__main__":
     ]
 
 
-    @auth.login_required
     @http.route("/customers")
+    # @auth.login_required
     def get_customers():
         return jsonify({'customers': customers})
 
 
     @http.route("/customers/<int:cust_id>")
+    # @auth.login_required
     def get_customer(cust_id):
-        customer = [customer for customer in customers if customer['id'] == cust_id]
+        customer = [c for c in customers if c['id'] == cust_id]
         if len(customer) == 0:
             abort(404)
         return jsonify({'customer': customer[0]})
 
 
+    @http.route('/customer_query', methods=['POST', 'GET'])
+    # @auth.login_required
+    def query_customer():
+        if 'name' not in request.args:
+            abort(400)
+        matches = [c for c in customers if request.args['name'] in c['name']]
+        if len(matches) == 0:
+            abort(404)
+        return jsonify({'customers': matches})
+
+
     @http.route('/customers', methods=['POST'])
+    # @auth.login_required
     def create_customer():
         if not request.json or not 'name' in request.json:
             abort(400)
@@ -116,4 +128,4 @@ if __name__ == "__main__":
     # Run HTTP server in a thread
     Thread(target=http.run, kwargs={"port": args[PORT]}).start()
 
-    sleep()
+    waitForKeyboardInterrupt()

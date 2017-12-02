@@ -9,7 +9,7 @@ $ cd git
 $ git clone https://github.com/athenian-robotics/web-services-demo.git
 ```
 
-Install the required python modules with:
+Install the required python packages with:
 ```bash
 $ cd ~/git/web-services-demo
 $ pip install -r requirements.txt
@@ -56,3 +56,12 @@ $ http http://localhost:8080/customers
 $ http http://localhost:8080/customers name='Jill West' address='456 Sycamore Lane'
 $ http http://localhost:8080/customers
 ```
+
+### Programatic Calls
+
+Start the server with:
+```bash
+$ cd ~/git/web-services-demo
+$ python all_customers.py
+```
+

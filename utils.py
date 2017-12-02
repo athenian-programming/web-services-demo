@@ -20,18 +20,14 @@ def is_python3():
     return sys.version_info[0] >= 3
 
 
-def sleep():
-    while True:
-        time.sleep(60)
-
-
 def current_time_millis():
     return int(round(time.time() * 1000))
 
 
 def waitForKeyboardInterrupt():
     try:
-        sleep()
+        while True:
+            time.sleep(60)
     except KeyboardInterrupt:
         pass
 
