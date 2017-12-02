@@ -83,3 +83,9 @@ $ cd ~/git/web-services-demo
 $ ./customer_by_name.py -n Bill
 ```
 
+Create a new customer with:
+```bash
+$ cd ~/git/web-services-demo
+$ ./create_customer.py -n "Mike Bryant" -a "1831 Dupont St"
+```
+
