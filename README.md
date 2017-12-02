@@ -36,18 +36,22 @@ $ http http://localhost:8080/plain-hello
 $ http http://localhost:8080/html-hello
 ```
 
-Query all values with:
+Query all customers with:
 ```bash
 $ http http://localhost:8080/customers
 ```
 
-Query single value with:
+Query customers by id with:
 ```bash
 $ http http://localhost:8080/customers/1
 $ http http://localhost:8080/customers/2
 $ http http://localhost:8080/customers/3
 ```
 
+Query customers by name with:
+```bash
+$ http http://localhost:8080/customer_query?name=Bill
+```
 
 Add values via POST with:
 ```bash
@@ -59,9 +63,23 @@ $ http http://localhost:8080/customers
 
 ### Programatic Calls
 
-Start the server with:
+Query all customers with:
 ```bash
 $ cd ~/git/web-services-demo
-$ python all_customers.py
+$ ./all_customers.py
+```
+
+Query customers by id with:
+```bash
+$ cd ~/git/web-services-demo
+$ ./customer_by_id.py -i 1
+$ ./customer_by_id.py -i 2
+$ ./customer_by_id.py -i 3
+```
+
+Query customers by name with:
+```bash
+$ cd ~/git/web-services-demo
+$ ./customer_by_name.py -n Bill
 ```
 

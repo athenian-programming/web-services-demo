@@ -1,15 +1,24 @@
 #!/usr/bin/env python
 
+import argparse
+
 import requests
 
-r = requests.get('http://localhost:8080/customers/1')
+ID = 'id'
 
-print("URL: {}\n".format(r.url))
+# Parse cli args
+parser = argparse.ArgumentParser()
+parser.add_argument('-i', '--id', required=True, dest=ID, help='Customer ID')
+args = vars(parser.parse_args())
 
-data = r.json()
+resp = requests.get('http://localhost:8080/customers/{}'.format(args[ID]))
+
+print('URL: {}\n'.format(resp.url))
+
+data = resp.json()
 cust = data['customer']
 
-print("Customer:")
+print('Customer:')
 for k, v in cust.iteritems():
-    print("{}: {}".format(k, v))
-print("")
+    print('{}: {}'.format(k, v))
+print('')

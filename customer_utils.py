@@ -4,9 +4,9 @@ import requests
 
 
 def customers():
-    r = requests.get('http://localhost:8080/customers')
+    resp = requests.get('http://localhost:8080/customers')
 
-    data = r.json()
+    data = resp.json()
 
     cust_list = data['customers']
 

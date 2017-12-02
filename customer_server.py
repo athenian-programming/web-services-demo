@@ -2,7 +2,6 @@
 
 import argparse
 import logging
-from threading import Thread
 
 from flask import Flask
 from flask import abort
@@ -12,19 +11,18 @@ from flask import request
 from flask_httpauth import HTTPBasicAuth
 
 from utils import setup_logging
-from utils import waitForKeyboardInterrupt
 
-PORT = "port"
-LOG_LEVEL = "loglevel"
+PORT = 'port'
+LOG_LEVEL = 'loglevel'
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     # Inspired by: https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
     # Parse CLI args
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", "--port", dest=PORT, default=8080, help="HTTP port [8080]")
-    parser.add_argument("-v", "--verbose", dest=LOG_LEVEL, default=logging.INFO, action="store_const",
-                        const=logging.DEBUG, help="Enable debugging info")
+    parser.add_argument('-p', '--port', dest=PORT, default=8080, help='HTTP port [8080]')
+    parser.add_argument('-v', '--verbose', dest=LOG_LEVEL, default=logging.INFO, action='store_const',
+                        const=logging.DEBUG, help='Enable debugging info')
     args = vars(parser.parse_args())
 
     # Setup logging
@@ -46,14 +44,14 @@ if __name__ == "__main__":
         return make_response(jsonify({'error': 'Unauthorized access'}), 401)
 
 
-    @http.route("/plain-hello")
+    @http.route('/plain-hello')
     def plain_hello():
-        return "Hello world"
+        return 'Hello world'
 
 
-    @http.route("/html-hello")
+    @http.route('/html-hello')
     def html_hello():
-        return "<html><head></head><body><h1>Hello world</h1></body></html>"
+        return '<html><head></head><body><h1>Hello world</h1></body></html>'
 
 
     customers = [
@@ -84,14 +82,13 @@ if __name__ == "__main__":
     ]
 
 
-    @http.route("/customers")
+    @http.route('/customers', methods=['GET'])
     # @auth.login_required
     def get_customers():
         return jsonify({'customers': customers})
 
 
-    @http.route("/customers/<int:cust_id>")
-    # @auth.login_required
+    @http.route('/customers/<int:cust_id>', methods=['GET'])
     def get_customer(cust_id):
         customer = [c for c in customers if c['id'] == cust_id]
         if len(customer) == 0:
@@ -99,10 +96,9 @@ if __name__ == "__main__":
         return jsonify({'customer': customer[0]})
 
 
-    @http.route('/customer_query', methods=['POST', 'GET'])
-    # @auth.login_required
+    @http.route('/customer_query', methods=['GET'])
     def query_customer():
-        if 'name' not in request.args:
+        if not request.args or 'name' not in request.args:
             abort(400)
         matches = [c for c in customers if request.args['name'] in c['name']]
         if len(matches) == 0:
@@ -111,21 +107,17 @@ if __name__ == "__main__":
 
 
     @http.route('/customers', methods=['POST'])
-    # @auth.login_required
     def create_customer():
         if not request.json or not 'name' in request.json:
             abort(400)
         customer = {
             'id': customers[-1]['id'] + 1,
             'name': request.json['name'],
-            'address': request.json.get('address', ""),
+            'address': request.json.get('address', ''),
             'paid': False
         }
         customers.append(customer)
         return jsonify({'customer': customer}), 201
 
 
-    # Run HTTP server in a thread
-    Thread(target=http.run, kwargs={"port": args[PORT]}).start()
-
-    waitForKeyboardInterrupt()
+    http.run(debug=False, port=args[PORT], host='0.0.0.0')
