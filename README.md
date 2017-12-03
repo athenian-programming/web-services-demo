@@ -1,7 +1,5 @@
 # Web Servcies Demo
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 ## Setup
 
 Clone the repo with:
@@ -22,6 +20,11 @@ Install [httpie](https://httpie.org) with:
 $ brew install httpie
 ```
 
+## Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+
 ## Usage
 
 Start the server with:
@@ -29,7 +32,7 @@ Start the server with:
 $ cd ~/git/web-services-demo
 $ python customer_server.py
 ```
-
+ 
 ### CLI Calls
 
 Say hello with:
