@@ -31,7 +31,7 @@ $ brew install httpie
 
 Install [nkrok](https://ngrok.com) with:
 ```bash
-brew cask reinstall ngrok
+$ brew cask install ngrok
 ```
 
 Launch `ngrok` with:
