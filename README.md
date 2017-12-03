@@ -1,6 +1,6 @@
 # Web Servcies Demo
 
-## Setup
+## Local Setup
 
 Clone the repo with:
 ```bash
@@ -19,11 +19,6 @@ Install [httpie](https://httpie.org) with:
 ```bash
 $ brew install httpie
 ```
-
-## Heroku
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 
 ## Usage
 
@@ -94,3 +89,19 @@ $ cd ~/git/web-services-demo
 $ ./create_customer.py -n "Mike Bryant" -a "1831 Dupont St"
 ```
 
+## Heroku Setup
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+
+## Ngrok Setup
+
+Install `ngrok` with:
+```bash
+brew cask reinstall ngrok
+```
+
+Launch `ngrok` with:
+```bash
+$ ngrok http 8080
+```
