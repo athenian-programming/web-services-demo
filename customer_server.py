@@ -16,8 +16,10 @@ from utils import setup_logging
 PORT = 'port'
 LOG_LEVEL = 'loglevel'
 
+logger = logging.getLogger(__name__)
+
 if __name__ == '__main__':
-    # Inspired by: https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
+    # Based on https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
     # Parse CLI args
     parser = argparse.ArgumentParser()
@@ -122,5 +124,6 @@ if __name__ == '__main__':
 
 
     port = int(os.environ.get('PORT', args[PORT]))
+    logger.info("Starting customer server listening on port {}".format(port))
 
     http.run(debug=False, port=port, host='0.0.0.0')
