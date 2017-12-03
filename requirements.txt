@@ -1,4 +1,5 @@
-flask
-flask-httpauth
-argparse
-requests
+Flask==0.12.2
+Flask-httpauth==3.2.3
+requests==2.18.4
+gunicorn==19.7.1
+

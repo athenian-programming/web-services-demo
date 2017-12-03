@@ -2,6 +2,7 @@
 
 import argparse
 import logging
+import os
 
 from flask import Flask
 from flask import abort
@@ -120,4 +121,6 @@ if __name__ == '__main__':
         return jsonify({'customer': customer}), 201
 
 
-    http.run(debug=False, port=args[PORT], host='0.0.0.0')
+    port = int(os.environ.get('PORT', args[PORT]))
+
+    http.run(debug=False, port=port, host='0.0.0.0')

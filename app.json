@@ -1,0 +1,9 @@
+{
+  "name": "Athenian Web Service Demo",
+  "description": "Athenisn Web Service on Heroku",
+  "keywords": [
+    "flask",
+    "python"
+  ],
+  "repository": "https://github.com/athenian-robotics/web-services-demo.git"
+}
