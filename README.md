@@ -29,7 +29,7 @@ $ brew install httpie
 
 ### Ngrok 
 
-Install `ngrok` with:
+Install [nkrok](https://ngrok.com) with:
 ```bash
 brew cask reinstall ngrok
 ```
