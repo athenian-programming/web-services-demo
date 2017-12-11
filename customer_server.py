@@ -42,7 +42,15 @@ def plain_hello():
 
 @http.route('/html-hello')
 def html_hello():
-    return '<html><head></head><body><h1>Hello world</h1></body></html>'
+    return '''
+    <html>
+        <head>
+        </head>
+        <body>
+            <h1>Hello world</h1>
+        </body>
+    </html>
+    '''
 
 
 customers = [
