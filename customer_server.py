@@ -6,6 +6,7 @@ import logging
 import os
 
 from flask import Flask
+from flask import Response
 from flask import abort
 from flask import jsonify
 from flask import make_response
@@ -35,14 +36,18 @@ def unauthorized():
     return make_response(jsonify({'error': 'Unauthorized access'}), 401)
 
 
+@http.route('/')
+def root():
+    return Response('This is the root', mimetype='text/plain')
+
 @http.route('/plain-hello')
 def plain_hello():
-    return 'Hello world'
+    return Response('Hello world', mimetype='text/plain')
 
 
 @http.route('/html-hello')
 def html_hello():
-    return '''
+    text = '''
     <html>
         <head>
         </head>
@@ -51,6 +56,7 @@ def html_hello():
         </body>
     </html>
     '''
+    return Response(text, mimetype='text/html')
 
 
 customers = [
