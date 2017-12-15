@@ -42,7 +42,7 @@ def root():
 
 @http.route('/plain-hello')
 def plain_hello():
-    return Response('Hello world', mimetype='text/plain')
+    return Response('Hello World!', mimetype='text/plain')
 
 
 @http.route('/html-hello')
