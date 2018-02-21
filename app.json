@@ -1,6 +1,6 @@
 {
   "name": "Athenian Web Service Demo",
-  "description": "Athenisn Web Service on Heroku",
+  "description": "Athenian Web Service on Heroku",
   "keywords": [
     "flask",
     "python"
