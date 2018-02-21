@@ -38,7 +38,7 @@ def unauthorized():
 
 @http.route('/')
 def root():
-    return Response('This is our really cool app', mimetype='text/plain')
+    return Response('This is our really, really cool app', mimetype='text/plain')
 
 @http.route('/plain-hello')
 def plain_hello():
