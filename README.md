@@ -1,5 +1,8 @@
 # Web Services Demo
 
+## Related Posts
+* [How to make REST Api in Python](https://repl.it/talk/learn/How-to-make-Rest-Api-in-Python/9038)
+
 ## Setup
 
 ### Local 
@@ -107,4 +110,3 @@ Create a new customer with:
 $ cd ~/git/web-services-demo
 $ ./create_customer.py -n "Mike Bryant" -a "1831 Dupont St"
 ```
-
