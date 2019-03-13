@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # Based on https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
-import argparse
-import logging
 import os
 
+import argparse
+import logging
 from flask import Flask
 from flask import Response
 from flask import abort
@@ -39,6 +39,7 @@ def unauthorized():
 @http.route('/')
 def root():
     return Response('This is our really cool app', mimetype='text/plain')
+
 
 @http.route('/plain-hello')
 def plain_hello():
@@ -125,7 +126,7 @@ def create_customer():
     return jsonify({'customer': customer}), 201
 
 
-if __name__ == '__main__':
+def main():
     # Parse CLI args
     parser = argparse.ArgumentParser()
     parser.add_argument('-p', '--port', dest=PORT, default=8080, help='HTTP port [8080]')
@@ -140,3 +141,7 @@ if __name__ == '__main__':
     logger.info("Starting customer server listening on port {}".format(port))
 
     http.run(debug=False, port=port, host='0.0.0.0')
+
+
+if __name__ == "__main__":
+    main()

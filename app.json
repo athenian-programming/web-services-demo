@@ -1,9 +1,9 @@
 {
-  "name": "Athenian Web Service Demo",
-  "description": "Athenian Web Service on Heroku",
+  "name": "Web Service Demo",
+  "description": "Web Service on Heroku",
   "keywords": [
     "flask",
     "python"
   ],
-  "repository": "https://github.com/athenian-robotics/web-services-demo.git"
+  "repository": "https://github.com/athenian-programming/web-services-demo.git"
 }

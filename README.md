@@ -5,13 +5,16 @@
 
 ## Setup
 
-### Local 
-
 Clone the repo with:
 ```bash
 $ mkdir ~/git
 $ cd git
 $ git clone https://github.com/athenian-robotics/web-services-demo.git
+```
+
+Install [httpie](https://httpie.org) with:
+```bash
+$ brew install httpie
 ```
 
 Install the required python packages with:
@@ -20,15 +23,15 @@ $ cd ~/git/web-services-demo
 $ pip install -r requirements.txt
 ```
 
-Install [httpie](https://httpie.org) with:
+## Running the server
+
+### Local 
+
+Start the server with:
 ```bash
-$ brew install httpie
+$ cd ~/git/web-services-demo
+$ python customer_server.py
 ```
-
-### Heroku 
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 
 ### Ngrok 
 
@@ -41,16 +44,33 @@ Launch `ngrok` with:
 ```bash
 $ ngrok http 8080
 ```
-
-## Usage
-
-Start the server with:
-```bash
-$ cd ~/git/web-services-demo
-$ python customer_server.py
-```
  
-### CLI Calls
+### Deploying to Heroku
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+1) Create a new Heroku app with:
+```
+heroku create [APP_NAME]
+```
+
+2) Deploy code to Heroku with:
+```
+git push heroku master
+```
+
+3) Open Heroku app in browser with:
+```
+heroku open
+```
+or visit [http://APP_NAME.herokuapp.com](http://APP_NAME.herokuapp.com).
+
+4) View server logs with the `heroku logs` command with:
+```
+heroku logs --tail
+```
+
+## CLI Calls
 
 Say hello with:
 ```bash
@@ -88,25 +108,25 @@ $ http :8080/customers
 Query all customers with:
 ```bash
 $ cd ~/git/web-services-demo
-$ ./all_customers.py
+$ src/all_customers.py
 ```
 
 Query customers by id with:
 ```bash
 $ cd ~/git/web-services-demo
-$ ./customer_by_id.py -i 1
-$ ./customer_by_id.py -i 2
-$ ./customer_by_id.py -i 3
+$ src/customer_by_id.py -i 1
+$ src/customer_by_id.py -i 2
+$ src/customer_by_id.py -i 3
 ```
 
 Query customers by name with:
 ```bash
 $ cd ~/git/web-services-demo
-$ ./customer_by_name.py -n Bill
+$ src/customer_by_name.py -n Bill
 ```
 
 Create a new customer with:
 ```bash
 $ cd ~/git/web-services-demo
-$ ./create_customer.py -n "Mike Bryant" -a "1831 Dupont St"
+$ src/create_customer.py -n "Mike Bryant" -a "1831 Dupont St"
 ```
