@@ -1,29 +1,31 @@
 #!/usr/bin/env python
 
 import argparse
+
 import requests
 
 NAME = 'name'
+ADDRESS = 'address'
 
 
 def main():
     # Parse cli args
     parser = argparse.ArgumentParser()
     parser.add_argument('-n', '--name', required=True, dest=NAME, help='Customer name')
+    parser.add_argument('-a', '--address', required=True, dest=ADDRESS, help='Customer address')
     args = vars(parser.parse_args())
 
-    resp = requests.get('http://localhost:8080/customer_query', params={'name': args[NAME]})
+    resp = requests.post('http://localhost:8080/customers', json={'name': args[NAME], 'address': args[ADDRESS]})
 
     print('URL: {}\n'.format(resp.url))
 
     data = resp.json()
-    cust_list = data['customers']
+    cust = data['customer']
 
-    print('Customers:')
-    for cust in cust_list:
-        for k, v in cust.iteritems():
-            print('{}: {}'.format(k, v))
-        print('')
+    print('New customer:')
+    for k, v in cust.iteritems():
+        print('{}: {}'.format(k, v))
+    print('')
 
 
 if __name__ == "__main__":

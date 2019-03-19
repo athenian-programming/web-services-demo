@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # Based on https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
-import os
-
 import argparse
 import logging
+import os
+
 from flask import Flask
 from flask import Response
 from flask import abort

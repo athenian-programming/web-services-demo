@@ -1,27 +1,26 @@
 #!/usr/bin/env python
 
 import argparse
+
 import requests
 
-NAME = 'name'
-ADDRESS = 'address'
+ID = 'id'
 
 
 def main():
     # Parse cli args
     parser = argparse.ArgumentParser()
-    parser.add_argument('-n', '--name', required=True, dest=NAME, help='Customer name')
-    parser.add_argument('-a', '--address', required=True, dest=ADDRESS, help='Customer address')
+    parser.add_argument('-i', '--id', required=True, dest=ID, help='Customer ID')
     args = vars(parser.parse_args())
 
-    resp = requests.post('http://localhost:8080/customers', json={'name': args[NAME], 'address': args[ADDRESS]})
+    resp = requests.get('http://localhost:8080/customers/{}'.format(args[ID]))
 
     print('URL: {}\n'.format(resp.url))
 
     data = resp.json()
     cust = data['customer']
 
-    print('New customer:')
+    print('Customer:')
     for k, v in cust.iteritems():
         print('{}: {}'.format(k, v))
     print('')
