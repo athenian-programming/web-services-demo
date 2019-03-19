@@ -1,1 +1,1 @@
-web: gunicorn -b 0.0.0.0:$PORT customer_server:http
+web: gunicorn -b 0.0.0.0:$PORT src/customer_server:http
