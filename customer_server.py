@@ -10,6 +10,7 @@ from flask import Response
 from flask import abort
 from flask import jsonify
 from flask import make_response
+from flask import render_template
 from flask import request
 from flask_httpauth import HTTPBasicAuth
 
@@ -38,7 +39,7 @@ def unauthorized():
 
 @http.route('/')
 def root():
-    return Response('This is our really cool app', mimetype='text/plain')
+    return Response('This is a really cool app', mimetype='text/plain')
 
 
 @http.route('/plain-hello')
@@ -58,6 +59,12 @@ def html_hello():
     </html>
     '''
     return Response(text, mimetype='text/html')
+
+
+@http.route("/template")
+def template():
+    message = "Hello, World"
+    return render_template('template.html', message=message)
 
 
 customers = [

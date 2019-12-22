@@ -18,6 +18,9 @@ def main():
     print('URL: {}\n'.format(resp.url))
 
     data = resp.json()
+
+    print('data is: {}\n'.format(data))
+
     cust_list = data['customers']
 
     print('Customers:')
