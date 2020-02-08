@@ -55,15 +55,23 @@ def html_hello():
         </head>
         <body>
             <h1>Hello World!</h1>
+            <h2>Hello World!</h2>
+            <h3>Hello World!</h3>
+            <h4>Hello World!</h4>
         </body>
     </html>
     '''
     return Response(text, mimetype='text/html')
 
 
+counter = 0
+
+
 @http.route("/template")
 def template():
-    message = "Hello, World"
+    global counter
+    counter = counter + 1
+    message = "Hello, World " + str(counter)
     return render_template('template.html', message=message)
 
 
@@ -98,6 +106,7 @@ customers = [
 @http.route('/customers', methods=['GET'])
 # @auth.login_required
 def get_customers():
+    print(jsonify({'customers': customers}))
     return jsonify({'customers': customers})
 
 
