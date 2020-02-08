@@ -21,7 +21,7 @@ def main():
     cust = data['customer']
 
     print('Customer:')
-    for k, v in cust.iteritems():
+    for k, v in cust.items():
         print('{}: {}'.format(k, v))
     print('')
 

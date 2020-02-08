@@ -25,7 +25,7 @@ def main():
 
     print('Customers:')
     for cust in cust_list:
-        for k, v in cust.iteritems():
+        for k, v in cust.items():
             print('{}: {}'.format(k, v))
         print('')
 
