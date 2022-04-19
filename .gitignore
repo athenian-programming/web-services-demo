@@ -1,4 +1,6 @@
 .idea/
+database.ini
+test.flc
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -15,18 +15,18 @@ def main():
 
     resp = requests.get('http://localhost:8080/customer_query', params={'name': args[NAME]})
 
-    print('URL: {0}\n'.format(resp.url))
+    print(f'URL: {resp.url}\n')
 
     data = resp.json()
 
-    print('data is: {0}\n'.format(data))
+    print(f'data is: {data}\n')
 
     cust_list = data['customers']
 
     print('Customers:')
     for cust in cust_list:
         for k, v in cust.items():
-            print('{}: {}'.format(k, v))
+            print(f'{k}: {v}')
         print('')
 
 

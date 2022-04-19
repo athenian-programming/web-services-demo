@@ -52,8 +52,8 @@ def main():
 
         for result in response.results:
             translation = result.alternatives[0].transcript
-            print('Transcript: {}'.format(translation))
-            print('Confidence: {}'.format(result.alternatives[0].confidence))
+            print(f'Transcript: {translation}')
+            print(f'Confidence: {result.alternatives[0].confidence}')
 
             if "left" in translation:
                 print("Send left command")

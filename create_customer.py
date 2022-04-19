@@ -17,14 +17,14 @@ def main():
 
     resp = requests.post('http://localhost:8080/customers', json={'name': args[NAME], 'address': args[ADDRESS]})
 
-    print('URL: {}\n'.format(resp.url))
+    print(f'URL: {resp.url}\n')
 
     data = resp.json()
     cust = data['customer']
 
     print('New customer:')
     for k, v in cust.items():
-        print('{}: {}'.format(k, v))
+        print(f'{k}: {v}')
     print('')
 
 

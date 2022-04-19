@@ -9,7 +9,7 @@ from database_config import config
 from student import Student
 
 
-def all_students():
+def fetch_all_students():
     conn = None
     try:
         params = config()
@@ -41,6 +41,6 @@ def all_students():
 
 
 if __name__ == '__main__':
-    students = all_students()
+    students = fetch_all_students()
     for student in students:
         print(student.email)

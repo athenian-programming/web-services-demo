@@ -14,6 +14,7 @@ from flask import render_template
 from flask import request
 from flask_httpauth import HTTPBasicAuth
 
+from database_students import fetch_all_students
 from utils import setup_logging
 
 PORT = 'port'
@@ -130,7 +131,7 @@ def query_customer():
 
 @http.route('/customers', methods=['POST'])
 def create_customer():
-    if not request.json or not 'name' in request.json:
+    if not request.json or 'name' not in request.json:
         abort(400)
     customer = {
         'id': customers[-1]['id'] + 1,
@@ -142,14 +143,37 @@ def create_customer():
     return jsonify({'customer': customer}), 201
 
 
-@http.route('/students', methods=['GET'])
-def all_students():
-    if not request.args or 'name' not in request.args:
-        abort(400)
-    matches = [c for c in customers if request.args['name'] in c['name']]
-    if len(matches) == 0:
+@http.route('/students-json', methods=['GET'])
+def all_students_json():
+    students = fetch_all_students()
+    if len(students) == 0:
         abort(404)
-    return jsonify({'customers': matches})
+    s = map(lambda x: x.__dict__, students)
+    return jsonify({'students': list(s)})
+
+
+@http.route('/students-html', methods=['GET'])
+def all_students_html():
+    students = fetch_all_students()
+    if len(students) == 0:
+        abort(404)
+
+    names = ''
+    for student in students:
+        names += f'<tr> <td> {student.email} </td> <td> {student.grad_year} </td> </tr>'
+
+    text = f'''
+    <html>
+        <head>
+        </head>
+        <body>
+            <table>
+            {names}
+            </table>
+        </body>
+    </html>
+    '''
+    return Response(text, mimetype='text/html')
 
 
 def main():
@@ -164,7 +188,7 @@ def main():
     setup_logging(level=args[LOG_LEVEL])
 
     port = int(os.environ.get('PORT', args[PORT]))
-    logger.info("Starting customer server listening on port {}".format(port))
+    logger.info(f"Starting customer server listening on port {port}")
 
     http.run(debug=False, port=port, host='0.0.0.0')
 

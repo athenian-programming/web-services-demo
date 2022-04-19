@@ -13,16 +13,16 @@ def main():
     parser.add_argument('-i', '--id', required=True, dest=ID, help='Customer ID')
     args = vars(parser.parse_args())
 
-    resp = requests.get('http://localhost:8080/customers/{}'.format(args[ID]))
+    resp = requests.get(f'http://localhost:8080/customers/{args[ID]}')
 
-    print('URL: {}\n'.format(resp.url))
+    print(f'URL: {resp.url}\n')
 
     data = resp.json()
     cust = data['customer']
 
     print('Customer:')
     for k, v in cust.items():
-        print('{}: {}'.format(k, v))
+        print(f'{k}: {v}')
     print('')
 
 
