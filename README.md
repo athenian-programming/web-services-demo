@@ -20,16 +20,24 @@ brew install httpie
 ```
 
 Install the required python packages with:
+
 ```bash
 cd ~/git/web-services-demo
 pip install -r requirements.txt
 ```
 
+## Simple HTTP Server
+
+```shell
+python3 -m http.server 8080
+```
+
 ## Running the server
 
-### Local 
+### Local
 
 Start the server with:
+
 ```bash
 cd ~/git/web-services-demo
 python src/server.py
