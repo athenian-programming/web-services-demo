@@ -15,7 +15,10 @@ def main():
     parser.add_argument('-a', '--address', required=True, dest=ADDRESS, help='Customer address')
     args = vars(parser.parse_args())
 
-    resp = requests.post('http://localhost:8080/customers', json={'name': args[NAME], 'address': args[ADDRESS]})
+    host = 'http://localhost:8080'
+    # host = 'https://athenian-ws-demo.herokuapp.com'
+
+    resp = requests.post(f'{host}/customers', json={'name': args[NAME], 'address': args[ADDRESS]})
 
     print(f'URL: {resp.url}\n')
 

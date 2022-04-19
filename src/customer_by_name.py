@@ -13,7 +13,10 @@ def main():
     parser.add_argument('-n', '--name', required=True, dest=NAME, help='Customer name')
     args = vars(parser.parse_args())
 
-    resp = requests.get('http://localhost:8080/customer_query', params={'name': args[NAME]})
+    host = 'http://localhost:8080'
+    # host = 'https://athenian-ws-demo.herokuapp.com
+
+    resp = requests.get(f'{host}/customer_query', params={'name': args[NAME]})
 
     print(f'URL: {resp.url}\n')
 

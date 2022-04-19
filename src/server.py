@@ -150,7 +150,7 @@ def create_customer():
 
 
 @http.route('/students-json', methods=['GET'])
-def all_students_json():
+def students_json():
     students = fetch_all_students()
     if len(students) == 0:
         abort(404)
@@ -159,7 +159,7 @@ def all_students_json():
 
 
 @http.route('/students-html', methods=['GET'])
-def all_students_html():
+def students_html():
     students = fetch_all_students()
     if len(students) == 0:
         abort(404)

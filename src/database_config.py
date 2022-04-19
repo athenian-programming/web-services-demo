@@ -4,12 +4,6 @@ from configparser import ConfigParser
 
 
 def config(filename='database.ini', section='postgresql'):
-    # create a parser
-    parser = ConfigParser()
-    # read config file
-    parser.read(filename)
-
-    # get section, default to postgresql
     db = {}
 
     host = os.environ.get('DB_HOST')
@@ -22,7 +16,13 @@ def config(filename='database.ini', section='postgresql'):
         db['database'] = name
         db['user'] = user
         db['password'] = password
-    elif parser.has_section(section):
+        return db
+
+    # create a parser
+    parser = ConfigParser()
+    # read config file
+    parser.read(filename)
+    if parser.has_section(section):
         params = parser.items(section)
         for param in params:
             db[param[0]] = param[1]

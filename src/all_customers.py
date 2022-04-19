@@ -4,7 +4,10 @@ import requests
 
 
 def main():
-    resp = requests.get('http://localhost:8080/customers', auth=('top', 'secret'))
+    host = 'http://localhost:8080'
+    # host = 'https://athenian-ws-demo.herokuapp.com'
+
+    resp = requests.get(f'{host}/customers', auth=('top', 'secret'))
 
     print(f'Status code: {resp.status_code}')
 

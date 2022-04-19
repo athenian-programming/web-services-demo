@@ -13,14 +13,11 @@ def fetch_all_students():
     conn = None
     try:
         params = config()
-
         print('Connecting to the Postgres database...')
         conn = psycopg2.connect(**params)
         cur = conn.cursor()
-
         print('Running student query...')
         cur.execute('SELECT * FROM students')
-
         results = list()
         while True:
             row = cur.fetchone()

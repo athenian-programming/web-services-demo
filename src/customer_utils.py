@@ -4,7 +4,10 @@ import requests
 
 
 def customers():
-    resp = requests.get('http://localhost:8080/customers')
+    host = 'http://localhost:8080'
+    # host = 'https://athenian-ws-demo.herokuapp.com'
+
+    resp = requests.get(f'{host}/customers')
 
     data = resp.json()
 

@@ -13,7 +13,11 @@ def main():
     parser.add_argument('-i', '--id', required=True, dest=ID, help='Customer ID')
     args = vars(parser.parse_args())
 
-    resp = requests.get(f'http://localhost:8080/customers/{args[ID]}')
+    host = 'http://localhost:8080'
+    # host = 'https://athenian-ws-demo.herokuapp.com'
+
+    # Make request
+    resp = requests.get(f'{host}/customers/{args[ID]}')
 
     print(f'URL: {resp.url}\n')
 
