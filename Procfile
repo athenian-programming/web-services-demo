@@ -1,1 +1,1 @@
-web: gunicorn -b 0.0.0.0:$PORT src/server:http
+web: gunicorn -b 0.0.0.0:$PORT --chdir src server:http
