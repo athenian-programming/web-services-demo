@@ -142,6 +142,16 @@ def create_customer():
     return jsonify({'customer': customer}), 201
 
 
+@http.route('/students', methods=['GET'])
+def all_students():
+    if not request.args or 'name' not in request.args:
+        abort(400)
+    matches = [c for c in customers if request.args['name'] in c['name']]
+    if len(matches) == 0:
+        abort(404)
+    return jsonify({'customers': matches})
+
+
 def main():
     # Parse CLI args
     parser = argparse.ArgumentParser()

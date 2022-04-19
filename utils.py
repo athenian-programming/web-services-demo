@@ -24,7 +24,7 @@ def current_time_millis():
     return int(round(time.time() * 1000))
 
 
-def waitForKeyboardInterrupt():
+def wait_for_keyboard_interrupt():
     try:
         while True:
             time.sleep(60)
@@ -38,6 +38,6 @@ def setup_logging(filename=None,
                   level=logging.INFO,
                   format='%(asctime)s %(name)-10s %(funcName)-10s():%(lineno)i: %(levelname)-6s %(message)s'):
     if filename:
-        logging.basicConfig(filename=filename, filemode=filemode, level=level, format=format)
+        logging.basicConfig(filename=filename, filemode=filemode, level=level, format=format2)
     else:
-        logging.basicConfig(stream=stream, level=level, format=format)
+        logging.basicConfig(stream=stream, level=level, format=format2)

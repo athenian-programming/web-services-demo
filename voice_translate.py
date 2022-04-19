@@ -28,7 +28,7 @@ def main():
     # Instantiates a client
     client = speech.SpeechClient()
 
-    while (True):
+    while True:
         input("Hit return to give command")
         # os.system("say 'speak'")
         os.system("rec --rate 16k --channels=1 test.flac trim 0 1.5")
@@ -55,19 +55,19 @@ def main():
             print('Transcript: {}'.format(translation))
             print('Confidence: {}'.format(result.alternatives[0].confidence))
 
-            if ("left" in translation):
+            if "left" in translation:
                 print("Send left command")
                 resp = move_robot('left')
-            elif ("right" in translation):
+            elif "right" in translation:
                 print("Send right command")
                 resp = move_robot('right')
-            elif ("forward" in translation):
+            elif "forward" in translation:
                 print("Send forward command")
                 resp = move_robot('forward')
-            elif ("back" in translation):
+            elif "back" in translation:
                 print("Send backward command")
                 resp = move_robot('backward')
-            elif ("stop" in translation):
+            elif "stop" in translation:
                 print("Send stop command")
                 resp = move_robot('stop')
 
