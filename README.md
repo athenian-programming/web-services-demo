@@ -32,7 +32,7 @@ pip install -r requirements.txt
 Start the server with:
 ```bash
 cd ~/git/web-services-demo
-python src/customer_server.py
+python src/server.py
 ```
 
 ### Ngrok 

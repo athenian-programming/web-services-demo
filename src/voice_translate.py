@@ -35,7 +35,7 @@ def main():
 
         # The name of the audio file to transcribe
         # file_name = os.path.join(os.path.dirname(__file__), 'test.flac')
-        file_name = os.path.join('/Users/pambrose/git/web-services-demo/test.flac')
+        file_name = os.path.join('/test.flac')
 
         # Loads the audio into memory
         with io.open(file_name, 'rb') as audio_file:

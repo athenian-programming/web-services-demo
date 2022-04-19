@@ -5,7 +5,7 @@ import argparse
 import logging
 import os
 
-from flask import Flask
+from flask import Flask, url_for
 from flask import Response
 from flask import abort
 from flask import jsonify
@@ -13,6 +13,7 @@ from flask import make_response
 from flask import render_template
 from flask import request
 from flask_httpauth import HTTPBasicAuth
+from werkzeug.utils import redirect
 
 from database_students import fetch_all_students
 from utils import setup_logging
@@ -41,6 +42,11 @@ def unauthorized():
 @http.route('/')
 def root():
     return Response('This is a really cool app', mimetype='text/plain')
+
+
+@http.route('/default.html')
+def favicon():
+    return redirect(url_for('static', filename='index.html'))
 
 
 @http.route('/plain-hello')
@@ -72,7 +78,7 @@ counter = 0
 def template():
     global counter
     counter = counter + 1
-    message = "Hello, World " + str(counter)
+    message = f"Hello, World {str(counter)}"
     return render_template('template.html', message=message)
 
 
