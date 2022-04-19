@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import os
 from configparser import ConfigParser
 
 
@@ -11,7 +11,18 @@ def config(filename='database.ini', section='postgresql'):
 
     # get section, default to postgresql
     db = {}
-    if parser.has_section(section):
+
+    host = os.environ.get('DB_HOST')
+    name = os.environ.get('DB_NAME')
+    user = os.environ.get('DB_USER')
+    password = os.environ.get('DB_PASSWORD')
+
+    if (host is not None) and (name is not None) and (user is not None) and (password is not None):
+        db['host'] = host
+        db['database'] = name
+        db['user'] = user
+        db['password'] = password
+    elif parser.has_section(section):
         params = parser.items(section)
         for param in params:
             db[param[0]] = param[1]
