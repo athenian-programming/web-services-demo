@@ -109,7 +109,7 @@ http :8080/customers name='Jill West' address='456 Sycamore Lane'
 http :8080/customers
 ```
 
-### Programatic Calls
+### Programmatic Calls
 
 Query all customers with:
 ```bash
