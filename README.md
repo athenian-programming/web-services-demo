@@ -3,20 +3,25 @@
 # Web Services Demo
 
 ## Related Posts
+
 * [How to make REST Api in Python](https://repl.it/talk/learn/How-to-make-Rest-Api-in-Python/9038)
 
 ## Setup
 
+Install [Http Toolkit](https://httptoolkit.tech)
+
+Install [httpie](https://httpie.org) with:
+
+```bash
+brew install httpie
+```
+
 Clone the repo with:
+
 ```bash
 mkdir ~/git
 cd git
 git clone https://github.com/athenian-robotics/web-services-demo.git
-```
-
-Install [httpie](https://httpie.org) with:
-```bash
-brew install httpie
 ```
 
 Install the required python packages with:
