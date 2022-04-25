@@ -27,38 +27,22 @@ auth = HTTPBasicAuth()
 http = Flask(__name__)
 
 
-@auth.get_password
-def get_password(username):
-    if username == 'top':
-        return 'secret'
-    return None
-
-
-@auth.error_handler
-def unauthorized():
-    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
-
-
 @http.route('/')
 def root():
     return Response('This is a really cool app', mimetype='text/plain')
 
 
-@http.route('/default.html')
-def favicon():
-    return redirect(url_for('static', filename='index.html'))
-
-
-@http.route('/plain-hello')
+@http.route('/plain-hello.txt')
 def plain_hello():
     return Response('Hello World!', mimetype='text/plain')
 
 
-@http.route('/html-hello')
+@http.route('/html-hello.html')
 def html_hello():
     text = '''
     <html>
         <head>
+            <title>Hello World</title>
         </head>
         <body>
             <h1>Hello World!</h1>
@@ -69,6 +53,11 @@ def html_hello():
     </html>
     '''
     return Response(text, mimetype='text/html')
+
+
+@http.route('/default.html')
+def favicon():
+    return redirect(url_for('static', filename='index.html'))
 
 
 counter = 0
@@ -180,6 +169,18 @@ def students_html():
     </html>
     '''
     return Response(text, mimetype='text/html')
+
+
+@auth.get_password
+def get_password(username):
+    if username == 'top':
+        return 'secret'
+    return None
+
+
+@auth.error_handler
+def unauthorized():
+    return make_response(jsonify({'error': 'Unauthorized access'}), 401)
 
 
 def main():
