@@ -1,4 +1,5 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
+
 # Based on https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask
 
 import argparse
@@ -32,12 +33,12 @@ def root():
     return Response('This is a really cool app', mimetype='text/plain')
 
 
-@http.route('/plain-hello.txt')
+@http.route('/plain-hello')
 def plain_hello():
     return Response('Hello World!', mimetype='text/plain')
 
 
-@http.route('/html-hello.html')
+@http.route('/html-hello')
 def html_hello():
     text = '''
     <html>
