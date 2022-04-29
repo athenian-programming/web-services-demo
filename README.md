@@ -52,23 +52,24 @@ ngrok http 8080
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-1) Create a new Heroku app with:
+Create a new Heroku app with:
 ```
 heroku create [APP_NAME]
 ```
 
-2) Deploy code to Heroku with:
+Deploy code to Heroku with:
 ```
 git push heroku master
 ```
 
-3) Open Heroku app in browser with:
+Open Heroku app in browser with:
 ```
 heroku open
 ```
-or visit [http://APP_NAME.herokuapp.com](http://APP_NAME.herokuapp.com).
 
-4) View server logs with the `heroku logs` command with:
+or visit `http://APP_NAME.herokuapp.com`.
+
+View server logs with the `heroku logs` command with:
 ```
 heroku logs --tail
 ```
@@ -110,29 +111,23 @@ http :8080/customers
 
 Query all customers with:
 ```bash
-cd ~/git/web-services-demo
 src/all_customers.py
 ```
 
 Query customers by id with:
 ```bash
-cd ~/git/web-services-demo
 src/customer_by_id.py -i 1
 src/customer_by_id.py -i 2
 src/customer_by_id.py -i 3
 ```
 
 Query customers by name with:
-
 ```bash
-cd ~/git/web-services-demo
 src/customer_by_name.py -n Bill
 ```
 
 Create a new customer with:
-
 ```bash
-cd ~/git/web-services-demo
 src/create_customer.py -n "Mike Bryant" -a "1831 Dupont St"
 ```
 
