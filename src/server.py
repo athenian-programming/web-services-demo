@@ -16,7 +16,6 @@ from flask import request
 from flask_httpauth import HTTPBasicAuth
 from werkzeug.utils import redirect
 
-from database_students import fetch_all_students
 from utils import setup_logging
 
 PORT = 'port'
@@ -139,39 +138,6 @@ def create_customer():
     return jsonify({'customer': customer}), 201
 
 
-@http.route('/students-json', methods=['GET'])
-def students_json():
-    students = fetch_all_students()
-    if len(students) == 0:
-        abort(404)
-    s = map(lambda x: x.__dict__, students)
-    return jsonify({'students': list(s)})
-
-
-@http.route('/students-html', methods=['GET'])
-def students_html():
-    students = fetch_all_students()
-    if len(students) == 0:
-        abort(404)
-
-    names = ''
-    for student in students:
-        names += f'<tr> <td> {student.email} </td> <td> {student.grad_year} </td> </tr>'
-
-    text = f'''
-    <html>
-        <head>
-        </head>
-        <body>
-            <table>
-            {names}
-            </table>
-        </body>
-    </html>
-    '''
-    return Response(text, mimetype='text/html')
-
-
 @auth.get_password
 def get_password(username):
     if username == 'top':
@@ -196,7 +162,7 @@ def main():
     setup_logging(level=args[LOG_LEVEL])
 
     port = int(os.environ.get('PORT', args[PORT]))
-    logger.info(f"Starting customer server listening on port {port}")
+    logger.info(f"Starting server listening on port {port}")
 
     http.run(debug=False, port=port, host='0.0.0.0')
 

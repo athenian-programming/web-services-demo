@@ -1,10 +1,4 @@
-[![Run on Repl.it](https://repl.it/badge/github/athenian-programming/web-services-demo)](https://repl.it/github/athenian-programming/web-services-demo)
-
 # Web Services Demo
-
-## Related Posts
-
-* [How to make REST Api in Python](https://repl.it/talk/learn/How-to-make-Rest-Api-in-Python/9038)
 
 ## Setup
 
@@ -19,22 +13,13 @@ brew install httpie
 Clone the repo with:
 
 ```bash
-mkdir ~/git
-cd git
 git clone https://github.com/athenian-robotics/web-services-demo.git
 ```
 
 Install the required python packages with:
 
 ```bash
-cd ~/git/web-services-demo
 pip install -r requirements.txt
-```
-
-## Simple HTTP Server
-
-```shell
-python3 -m http.server 8080
 ```
 
 ## Running the server
@@ -44,8 +29,7 @@ python3 -m http.server 8080
 Start the server with:
 
 ```bash
-cd ~/git/web-services-demo
-python src/server.py
+python3 src/server.py
 ```
 
 ### Ngrok 
@@ -139,13 +123,20 @@ src/customer_by_id.py -i 3
 ```
 
 Query customers by name with:
+
 ```bash
 cd ~/git/web-services-demo
 src/customer_by_name.py -n Bill
 ```
 
 Create a new customer with:
+
 ```bash
 cd ~/git/web-services-demo
 src/create_customer.py -n "Mike Bryant" -a "1831 Dupont St"
 ```
+
+## Related Posts
+
+* [How to make REST Api in Python](https://repl.it/talk/learn/How-to-make-Rest-Api-in-Python/9038)
+* [Designing a RESTful API with Python and Flask](https://blog.miguelgrinberg.com/post/designing-a-restful-api-with-python-and-flask)
